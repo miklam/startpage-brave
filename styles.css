@@ -142,13 +142,68 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
 .icon-name-list span { font-size: 1em; font-weight: 400; }
 
 /* ==========================================================================
-   Responsive Adjustments
+   Footer
    ========================================================================== */
+
+.footer {
+  width: 100%; /* Take full width to allow text-align to center content */
+  padding: 1em 0; /* Add some padding above and below */
+  text-align: center; /* Center the link text */
+  margin-top: auto; /* Helps push footer down if content is short, works with body flex */
+  position: relative; /* Keep it in normal flow, not fixed */
+}
+
+.footer a {
+  color: var(--ctp-subtext0); /* Use a subtle color from your theme */
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: var(--accent-color); /* Use your main accent color on hover/focus */
+  text-decoration: underline; /* Optional: add underline on hover */
+  outline: none; /* Remove default focus outline if using text-decoration or color change for focus */
+}
+
+
+/* ==========================================================================
+   Responsive Adjustments (Example for smaller screens)
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  .brave-page-container { flex-direction: column; min-height: auto; height: auto; margin: 1em; }
-  .foundry-panel { border-right: none; border-bottom: 1px solid var(--panel-border); min-height: 250px; }
-  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em; margin-bottom: 0.5em; /* Adjust margin for mobile */ }
-  .links-panel { flex-direction: column; overflow-y: visible; padding: var(--panel-padding); }
-  .icon-name-list img { width: calc(var(--icon-size) * 0.85); height: calc(var(--icon-size) * 0.85); }
-  .icon-name-list span { font-size: 0.9em; }
+  .brave-page-container {
+    flex-direction: column;
+    min-height: auto;
+    height: auto;
+    margin: 1em;
+  }
+
+  .foundry-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+    min-height: 250px;
+  }
+  .foundry-link-text {
+    font-size: 1.5em;
+    padding: 0.4em 0.8em;
+    margin-bottom: 0.5em;
+  }
+  .links-panel {
+    flex-direction: column;
+    overflow-y: visible;
+    padding: var(--panel-padding);
+  }
+  .icon-name-list img {
+    width: calc(var(--icon-size) * 0.85);
+    height: calc(var(--icon-size) * 0.85);
+  }
+  .icon-name-list span {
+    font-size: 0.9em;
+  }
+
+  .footer {
+    padding: 0.5em 0 1em 0; /* Adjust mobile footer padding */
+  }
 }
