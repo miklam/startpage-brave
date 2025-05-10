@@ -70,24 +70,18 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
 
 .foundry-panel,
 .links-panel {
-  /* padding: var(--panel-padding); */ /* Padding will be handled differently for foundry panel */
   display: flex;
   flex-direction: column;
 }
 
 .foundry-panel {
-  flex: 1; /* Takes up half the space */
-  /* REMOVE justify-content and align-items from here */
-  /* REMOVE background-color: var(--ctp-surface0); */
+  flex: 1;
   border-right: 1px solid var(--panel-border);
-  position: relative; /* For positioning the link overlay */
-  padding: 0; /* Remove padding to allow image to fill */
-
-  /* --- Background Image for Foundry Panel --- */
-  /* IMPORTANT: Replace with your actual image path */
-  background-image: url('assets/images/foundry-bg.jpg'); /* Or .png etc. */
-  background-size: cover; /* Cover the entire panel */
-  background-position: center; /* Center the image */
+  position: relative; 
+  padding: 0; 
+  background-image: url('assets/images/foundry-bg.jpg'); /* Ensure this path is correct */
+  background-size: cover; 
+  background-position: center; 
   background-repeat: no-repeat;
 }
 
@@ -95,7 +89,7 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
   flex: 1;
   display: flex;
   gap: var(--panel-padding);
-  padding: var(--panel-padding); /* Add padding back to this panel */
+  padding: var(--panel-padding); 
   overflow-y: auto;
 }
 
@@ -106,36 +100,35 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
    Foundry VTT Image Link
    ========================================================================== */
 .foundry-image-link {
-  display: flex; /* To center the text span if visible */
-  justify-content: center;
-  align-items: center;
+  display: flex; 
+  justify-content: center; /* Horizontal centering */
+  align-items: flex-end;   /* MODIFIED: Align text to the bottom */
   width: 100%;
   height: 100%;
-  position: absolute; /* If you want it to overlay precisely */
+  position: absolute; 
   top: 0;
   left: 0;
   text-decoration: none;
-  transition: background-color 0.3s ease; /* For hover effect */
+  transition: background-color 0.3s ease; 
 }
 
 .foundry-image-link:hover,
 .foundry-image-link:focus {
-  background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay on hover/focus */
+  background-color: rgba(0, 0, 0, 0.2); 
   outline: none;
 }
 
 .foundry-link-text {
-  color: var(--ctp-text); /* Or a brighter color like --ctp-rosewater */
+  color: var(--ctp-text); 
   font-family: var(--font-header);
-  font-size: 2em; /* Adjust as needed */
+  font-size: 2em; 
   font-weight: 700;
   padding: 0.5em 1em;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
-  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better contrast */
+  border-radius: var(--border-radius) var(--border-radius) 0 0; /* Round top corners if at bottom */
   text-align: center;
-  /* By default, this text will be visible. */
+  margin-bottom: 1em; /* ADDED: Add some space from the absolute bottom */
   /* To hide it and just have the image clickable, set: display: none; */
-  /* display: none; */
 }
 
 /* ==========================================================================
@@ -153,9 +146,9 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
    ========================================================================== */
 @media (max-width: 768px) {
   .brave-page-container { flex-direction: column; min-height: auto; height: auto; margin: 1em; }
-  .foundry-panel { border-right: none; border-bottom: 1px solid var(--panel-border); min-height: 250px; /* Ensure enough height for bg image */ }
-  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em;}
-  .links-panel { flex-direction: column; overflow-y: visible; padding: var(--panel-padding); } /* Ensure links panel has padding on mobile */
+  .foundry-panel { border-right: none; border-bottom: 1px solid var(--panel-border); min-height: 250px; }
+  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em; margin-bottom: 0.5em; /* Adjust margin for mobile */ }
+  .links-panel { flex-direction: column; overflow-y: visible; padding: var(--panel-padding); }
   .icon-name-list img { width: calc(var(--icon-size) * 0.85); height: calc(var(--icon-size) * 0.85); }
   .icon-name-list span { font-size: 0.9em; }
 }
