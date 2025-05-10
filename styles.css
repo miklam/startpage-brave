@@ -85,7 +85,7 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
 
   /* --- Background Image for Foundry Panel --- */
   /* IMPORTANT: Replace with your actual image path */
-  background-image: url('asset/images/foundry-bg.jpg'); /* Or .png etc. */
+  background-image: url('assets/images/foundry-bg.jpg'); /* Or .png etc. */
   background-size: cover; /* Cover the entire panel */
   background-position: center; /* Center the image */
   background-repeat: no-repeat;
