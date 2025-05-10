@@ -44,12 +44,12 @@ const financeLinks = [
     {
         name: "Budget Spreadsheet", // More descriptive name
         url: "https://docs.google.com/spreadsheets/d/1ysoJcr2J0Tx0bMlGVVw5fr_dCdHJiI5YBNpFZSsGIc8/edit?resourcekey=&gid=586151987#gid=586151987",
-        icon: "asset/icons/finance/gsheet.svg"   // Placeholder (e.g., a generic sheet icon)
+        icon: "asset/icons/finance/finances.svg"   // Placeholder (e.g., a generic sheet icon)
     },
     {
         name: "Budget Input Form", // More descriptive name
         url: "https://docs.google.com/forms/d/e/1FAIpQLSeZRyKUPArE-ne0QiA1dW7fwAjWtFMUxuVik2ZOPhTefWZpTg/viewform",
-        icon: "asset/icons/finance/gform.svg"    // Placeholder (e.g., a generic form icon)
+        icon: "asset/icons/finance/wallet.svg"    // Placeholder (e.g., a generic form icon)
     }
 ];
 
