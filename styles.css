@@ -1,6 +1,6 @@
 /* ==========================================================================
    styles.css for Brave Startpage
-   Catppuccin Mocha Theme | Two-Panel Layout
+   Catppuccin Mocha Theme | Two-Panel Layout with Image
    Last updated: May 10, 2025
    ========================================================================== */
 
@@ -40,230 +40,122 @@
   /* --- Core Variables --- */
   --bg: var(--ctp-base);
   --fg: var(--ctp-text);
-  --panel-bg: var(--ctp-surface0);
+  --panel-bg: var(--ctp-surface0); /* Default panel background */
   --panel-border: var(--ctp-surface1);
   --accent-color: var(--ctp-mauve);
   --hover-bg: var(--ctp-surface1);
 
   /* --- Font Variables (Using Inter from index.html) --- */
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-header: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; /* If you add titles */
+  --font-header: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
   /* --- Sizing & Spacing --- */
-  --border-radius: 0.5em; /* Slightly smaller radius for a tighter look */
-  --panel-padding: 2em;
+  --border-radius: 0.5em;
+  --panel-padding: 2em; /* Default padding for panels */
   --link-padding: 0.75em;
-  --icon-size: 28px; /* Adjust as needed */
+  --icon-size: 28px;
 }
 
 /* ==========================================================================
    Global Resets & Base Styles
    ========================================================================== */
-
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  color: var(--fg);
-  outline-style: none;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  -ms-overflow-style: none;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-}
-/* Hide scrollbar for Webkit browsers */
-*::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  background-color: var(--bg);
-  color: var(--fg);
-  line-height: 1.6;
-  display: flex; /* For centering the page container */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1em; /* Add some padding around the page container */
-}
+* { margin: 0; padding: 0; border: 0; box-sizing: border-box; color: var(--fg); outline-style: none; text-decoration: none; -webkit-tap-highlight-color: transparent; -ms-overflow-style: none; scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
+body { font-family: var(--font-body); font-weight: 400; background-color: var(--bg); color: var(--fg); line-height: 1.6; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 1em; }
 
 /* ==========================================================================
    Main Page Container & Panels
    ========================================================================== */
-
-.brave-page-container {
-  display: flex;
-  width: 100%;
-  max-width: 1200px; /* Adjust max width as desired */
-  min-height: 80vh; /* Adjust min height as desired */
-  background-color: var(--ctp-mantle); /* Slightly different bg for the main box */
-  border-radius: var(--border-radius);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  overflow: hidden; /* If panels have internal scrolling */
-}
+.brave-page-container { display: flex; width: 100%; max-width: 1200px; min-height: 80vh; background-color: var(--ctp-mantle); border-radius: var(--border-radius); box-shadow: 0 10px 25px rgba(0,0,0,0.2); overflow: hidden; }
 
 .foundry-panel,
 .links-panel {
-  padding: var(--panel-padding);
+  /* padding: var(--panel-padding); */ /* Padding will be handled differently for foundry panel */
   display: flex;
-  flex-direction: column; /* Default for content stacking within panels */
+  flex-direction: column;
 }
 
 .foundry-panel {
   flex: 1; /* Takes up half the space */
-  justify-content: center; /* Center the button vertically */
-  align-items: center; /* Center the button horizontally */
-  background-color: var(--ctp-surface0); /* Slightly different bg for contrast */
-  border-right: 1px solid var(--panel-border); /* Separator line */
+  /* REMOVE justify-content and align-items from here */
+  /* REMOVE background-color: var(--ctp-surface0); */
+  border-right: 1px solid var(--panel-border);
+  position: relative; /* For positioning the link overlay */
+  padding: 0; /* Remove padding to allow image to fill */
+
+  /* --- Background Image for Foundry Panel --- */
+  /* IMPORTANT: Replace with your actual image path */
+  background-image: url('asset/images/foundry-bg.jpg'); /* Or .png etc. */
+  background-size: cover; /* Cover the entire panel */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
 }
 
 .links-panel {
-  flex: 1; /* Takes up the other half */
-  display: flex; /* To arrange the two link columns */
-  gap: var(--panel-padding); /* Space between the two link columns */
-  overflow-y: auto; /* Allow scrolling if link lists are long */
-}
-
-.links-column {
-  flex: 1; /* Each column takes half of the links-panel space */
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 0.5em; /* Space between items in a column */
+  gap: var(--panel-padding);
+  padding: var(--panel-padding); /* Add padding back to this panel */
+  overflow-y: auto;
 }
 
-/* Optional Subtitles for link columns */
-.panel-subtitle {
-  font-family: var(--font-header);
-  font-size: 1.1em;
-  font-weight: 700;
-  color: var(--ctp-subtext1);
-  margin-bottom: 1em;
-  text-align: center;
-  border-bottom: 1px solid var(--panel-border);
-  padding-bottom: 0.5em;
-}
+.links-column { flex: 1; display: flex; flex-direction: column; gap: 0.5em; }
+.panel-subtitle { font-family: var(--font-header); font-size: 1.1em; font-weight: 700; color: var(--ctp-subtext1); margin-bottom: 1em; text-align: center; border-bottom: 1px solid var(--panel-border); padding-bottom: 0.5em; }
 
 /* ==========================================================================
-   Foundry VTT Button/Link
+   Foundry VTT Image Link
    ========================================================================== */
-
-.foundry-big-button {
-  display: flex;
-  flex-direction: column; /* Stack icon above/below text if you add one */
+.foundry-image-link {
+  display: flex; /* To center the text span if visible */
   justify-content: center;
   align-items: center;
-  padding: 3em;
-  min-width: 200px; /* Ensure it has some size */
-  min-height: 150px;
-  background-color: var(--ctp-surface1); /* More prominent background */
-  color: var(--ctp-text);
-  font-family: var(--font-header);
-  font-size: 1.8em;
-  font-weight: 700;
-  text-align: center;
-  border-radius: var(--border-radius);
-  border: 2px solid transparent; /* For focus state */
-  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  height: 100%;
+  position: absolute; /* If you want it to overlay precisely */
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  transition: background-color 0.3s ease; /* For hover effect */
 }
 
-.foundry-big-button:hover,
-.foundry-big-button:focus {
-  background-color: var(--accent-color); /* Use accent on hover/focus */
-  color: var(--ctp-base); /* Text color that contrasts with accent */
-  transform: translateY(-3px); /* Slight lift effect */
-  border-color: var(--ctp-sky); /* Focus border */
+.foundry-image-link:hover,
+.foundry-image-link:focus {
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay on hover/focus */
   outline: none;
 }
 
-.foundry-big-button img { /* If you add an image/SVG inside the button */
-  width: 80px; /* Adjust as needed */
-  height: 80px;
-  margin-bottom: 0.5em;
+.foundry-link-text {
+  color: var(--ctp-text); /* Or a brighter color like --ctp-rosewater */
+  font-family: var(--font-header);
+  font-size: 2em; /* Adjust as needed */
+  font-weight: 700;
+  padding: 0.5em 1em;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+  border-radius: var(--border-radius);
+  text-align: center;
+  /* By default, this text will be visible. */
+  /* To hide it and just have the image clickable, set: display: none; */
+  /* display: none; */
 }
 
 /* ==========================================================================
    Icon & Name Link Lists (Google Services, Finances)
    ========================================================================== */
-
-.icon-name-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.icon-name-list li {
-  margin-bottom: 0.5em; /* Space between each link item */
-}
-
-.icon-name-list a {
-  display: flex;
-  align-items: center; /* Vertically align icon and name */
-  padding: var(--link-padding);
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  color: var(--ctp-subtext1); /* Slightly dimmer text for links */
-}
-
-.icon-name-list a:hover,
-.icon-name-list a:focus {
-  background-color: var(--hover-bg);
-  color: var(--ctp-text); /* Brighter text on hover */
-  outline: none;
-}
-
-.icon-name-list img {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  margin-right: 0.8em; /* Space between icon and name */
-}
-
-.icon-name-list span {
-  font-size: 1em;
-  font-weight: 400; /* Regular weight for link names */
-}
-
+.icon-name-list { list-style: none; padding: 0; margin: 0; }
+.icon-name-list li { margin-bottom: 0.5em; }
+.icon-name-list a { display: flex; align-items: center; padding: var(--link-padding); border-radius: var(--border-radius); transition: background-color 0.2s ease, color 0.2s ease; color: var(--ctp-subtext1); }
+.icon-name-list a:hover, .icon-name-list a:focus { background-color: var(--hover-bg); color: var(--ctp-text); outline: none; }
+.icon-name-list img { width: var(--icon-size); height: var(--icon-size); margin-right: 0.8em; }
+.icon-name-list span { font-size: 1em; font-weight: 400; }
 
 /* ==========================================================================
-   Responsive Adjustments (Example for smaller screens)
+   Responsive Adjustments
    ========================================================================== */
-
 @media (max-width: 768px) {
-  .brave-page-container {
-    flex-direction: column; /* Stack panels vertically on small screens */
-    min-height: auto;
-    height: auto;
-    margin: 1em; /* Adjust margin for smaller screens */
-  }
-
-  .foundry-panel {
-    border-right: none; /* Remove side border when stacked */
-    border-bottom: 1px solid var(--panel-border); /* Add bottom border */
-    min-height: 200px; /* Ensure some height for the button */
-  }
-
-  .foundry-big-button {
-    font-size: 1.5em;
-    padding: 2em;
-  }
-
-  .links-panel {
-    flex-direction: column; /* Stack link columns vertically */
-    overflow-y: visible; /* Disable scrolling for the panel itself */
-  }
-
-  .links-column {
-    /* Columns will naturally stack now */
-  }
-
-  .icon-name-list img {
-    width: calc(var(--icon-size) * 0.85); /* Slightly smaller icons */
-    height: calc(var(--icon-size) * 0.85);
-  }
-
-  .icon-name-list span {
-    font-size: 0.9em;
-  }
+  .brave-page-container { flex-direction: column; min-height: auto; height: auto; margin: 1em; }
+  .foundry-panel { border-right: none; border-bottom: 1px solid var(--panel-border); min-height: 250px; /* Ensure enough height for bg image */ }
+  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em;}
+  .links-panel { flex-direction: column; overflow-y: visible; padding: var(--panel-padding); } /* Ensure links panel has padding on mobile */
+  .icon-name-list img { width: calc(var(--icon-size) * 0.85); height: calc(var(--icon-size) * 0.85); }
+  .icon-name-list span { font-size: 0.9em; }
 }
