@@ -14,27 +14,27 @@ const googleServices = [
     {
         name: "Google Calendar",
         url: "https://calendar.google.com/",
-        icon: "asset/icons/google/calendar.svg" // Placeholder - update with your actual icon path
+        icon: "assets/icons/google/calendar.svg" // Placeholder - update with your actual icon path
     },
     {
         name: "Google Drive",
         url: "https://drive.google.com/",
-        icon: "asset/icons/google/drive.svg"     // Placeholder
+        icon: "assets/icons/google/drive.svg"     // Placeholder
     },
     {
         name: "Google Keep",
         url: "https://keep.google.com/",
-        icon: "asset/icons/google/keep.svg"      // Placeholder
+        icon: "assets/icons/google/keep.svg"      // Placeholder
     },
     {
         name: "Google Maps",
         url: "https://www.google.com/maps/", // As you provided
-        icon: "asset/icons/google/maps.svg"        // Placeholder
+        icon: "assets/icons/google/maps.svg"        // Placeholder
     },
     {
         name: "Google Photos",
         url: "https://photos.google.com/", // As you provided
-        icon: "asset/icons/google/photos.svg"      // Placeholder
+        icon: "assets/icons/google/photos.svg"      // Placeholder
     }
 ];
 
@@ -44,12 +44,12 @@ const financeLinks = [
     {
         name: "Budget Spreadsheet", // More descriptive name
         url: "https://docs.google.com/spreadsheets/d/1ysoJcr2J0Tx0bMlGVVw5fr_dCdHJiI5YBNpFZSsGIc8/edit?resourcekey=&gid=586151987#gid=586151987",
-        icon: "asset/icons/finance/finances.svg"   // Placeholder (e.g., a generic sheet icon)
+        icon: "assets/icons/finance/finances.svg"   // Placeholder (e.g., a generic sheet icon)
     },
     {
         name: "Budget Input Form", // More descriptive name
         url: "https://docs.google.com/forms/d/e/1FAIpQLSeZRyKUPArE-ne0QiA1dW7fwAjWtFMUxuVik2ZOPhTefWZpTg/viewform",
-        icon: "asset/icons/finance/wallet.svg"    // Placeholder (e.g., a generic form icon)
+        icon: "assets/icons/finance/wallet.svg"    // Placeholder (e.g., a generic form icon)
     }
 ];
 
