@@ -1,6 +1,6 @@
 /* ==========================================================================
    styles.css for Brave Startpage
-   Catppuccin Mocha Theme | Two-Panel Layout with Image & Footer
+   Catppuccin Mocha Theme | Two-Panel Layout with Image & Footer Outside
    Last updated: May 10, 2025
    ========================================================================== */
 
@@ -20,7 +20,7 @@
   --ctp-yellow: #f9e2af;
   --ctp-green: #a6e3a1;
   --ctp-teal: #94e2d5;
-  --ctp-sky: #89dceb;     /* Used for focus on tab buttons */
+  --ctp-sky: #89dceb;     /* Used for focus */
   --ctp-sapphire: #74c7ec;
   --ctp-blue: #89b4fa;
   --ctp-lavender: #b4befe;
@@ -69,10 +69,11 @@ body {
   color: var(--fg);
   line-height: 1.6;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Stack .brave-page-container and .footer vertically */
+  justify-content: center; /* Vertically center the content block on the page */
+  align-items: center;   /* Horizontally center the content block on the page */
   min-height: 100vh;
-  padding: 1em; /* Padding around the main container */
+  padding: 1em; /* Padding around the page content */
 }
 
 /* ==========================================================================
@@ -80,21 +81,21 @@ body {
    ========================================================================== */
 
 .brave-page-container {
-  display: flex;
-  flex-direction: column; /* Stack content-panels-wrapper and footer vertically */
+  display: flex; /* Its direct child is .content-panels-wrapper */
   width: 100%;
-  max-width: 1200px;
-  min-height: 80vh; /* Ensure it has some height */
+  max-width: 1200px; /* Max width for the main content box */
+  min-height: 75vh; /* Adjust as needed, leave some space for footer */
+  /* Or use flex-grow: 1; if body is also a flex container and you want it to take available space */
   background-color: var(--ctp-mantle);
   border-radius: var(--border-radius);
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  /* overflow: hidden; /* Removed to let box-shadow be visible, panels will handle their own scroll */
+  /* overflow: hidden; /* Let .content-panels-wrapper handle this if needed */
 }
 
 /* Wrapper for the two main content panels (Foundry & Links) */
 .content-panels-wrapper {
     display: flex; /* Arrange Foundry and Links panels side-by-side */
-    flex-grow: 1;  /* Allow this wrapper to take available vertical space */
+    flex-grow: 1;  /* Allow this wrapper to take available space within .brave-page-container */
     width: 100%;
     overflow: hidden; /* Handles overflow if panels are too wide (shouldn't happen with flex:1) */
 }
@@ -160,7 +161,6 @@ body {
 .foundry-image-link:hover,
 .foundry-image-link:focus {
   background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay on hover/focus */
-  /* outline: none; /* Covered by global focus style if using box-shadow */
 }
 .foundry-link-text {
   color: var(--ctp-text);
@@ -180,23 +180,24 @@ body {
 .icon-name-list { list-style: none; padding: 0; margin: 0; }
 .icon-name-list li { margin-bottom: 0.5em; }
 .icon-name-list a { display: flex; align-items: center; padding: var(--link-padding); border-radius: var(--border-radius); transition: background-color 0.2s ease, color 0.2s ease; color: var(--ctp-subtext1); }
-.icon-name-list a:hover, .icon-name-list a:focus { background-color: var(--hover-bg); color: var(--ctp-text); /* outline: none; */ }
+.icon-name-list a:hover, .icon-name-list a:focus { background-color: var(--hover-bg); color: var(--ctp-text); }
 .icon-name-list img { width: var(--icon-size); height: var(--icon-size); margin-right: 0.8em; }
 .icon-name-list span { font-size: 1em; font-weight: 400; }
 
 /* ==========================================================================
-   Footer
+   Footer (Now a direct child of body)
    ========================================================================== */
 .footer {
-  width: 100%;
+  width: 100%; /* Allow it to be centered by body's align-items:center */
+  max-width: 1200px; /* Match the main container's max-width for alignment */
   padding: 1em 0;
   text-align: center;
-  margin-top: auto; /* Pushes footer to bottom of .brave-page-container */
-  border-top: 1px solid var(--panel-border);
-  background-color: var(--ctp-mantle); /* Match container background */
+  margin-top: 1.5em; /* Space between main container and footer */
+  /* background-color: var(--ctp-mantle); /* Optional: if you want it to have a bg */
+  /* border-top: 1px solid var(--panel-border); /* Optional: separator */
 }
 .footer a { color: var(--ctp-subtext0); font-size: 0.9em; text-decoration: none; transition: color 0.2s ease; }
-.footer a:hover, .footer a:focus { color: var(--accent-color); text-decoration: underline; /* outline: none; */ }
+.footer a:hover, .footer a:focus { color: var(--accent-color); text-decoration: underline; }
 
 /* ==========================================================================
    Accessibility Focus Styles (Using box-shadow for rounded corners)
@@ -206,47 +207,52 @@ button:focus { /* General focus for links and any buttons */
   outline: none;
   box-shadow: 0 0 0 2px var(--accent-color);
 }
-/* Specific focus for Foundry link if needed, or rely on general 'a:focus' */
 .foundry-image-link:focus {
-  /* Already has a hover background, box-shadow might be too much on image */
-  /* If you want a distinct focus on the image link itself: */
-  /* box-shadow: 0 0 0 3px var(--ctp-sky) inset; */ /* Example: inset shadow */
+  /* The hover already provides a background overlay, which is good feedback. */
+  /* If more is needed, an inset shadow can work on the image area */
+  box-shadow: 0 0 0 3px var(--accent-color) inset; /* Example: Inset shadow */
 }
 .icon-name-list a:focus {
     box-shadow: 0 0 0 2px var(--ctp-sky); /* Different color for list item focus */
 }
+.footer a:focus { /* Ensure footer link focus is clear */
+    box-shadow: 0 0 0 2px var(--accent-color); /* Match general link focus */
+}
+
 
 /* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 @media (max-width: 768px) {
   body {
-    align-items: flex-start; /* Allow content to start from top on mobile */
+    align-items: stretch; /* Allow content to take full width on mobile */
     padding: 0.5em;
+    justify-content: flex-start; /* Align to top on mobile */
   }
   .brave-page-container {
-    flex-direction: column;
+    /* flex-direction: column; /* This is for its children, not needed here as its child is .content-panels-wrapper */
     min-height: auto;
     height: auto;
     margin: 0; /* Take full width of padded body */
     width: 100%;
+    box-shadow: none; /* Optional: remove shadow on mobile for flatter look */
   }
   .content-panels-wrapper {
-      flex-direction: column; /* Stack Foundry and Links panels */
+      flex-direction: column; /* Stack Foundry and Links panels on mobile */
   }
   .foundry-panel {
     border-right: none;
     border-bottom: 1px solid var(--panel-border);
-    min-height: 250px; /* Or adjust based on image aspect ratio */
+    min-height: 200px; /* Adjusted min-height for mobile */
   }
-  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em; margin-bottom: 0.5em; }
+  .foundry-link-text { font-size: 1.3em; padding: 0.3em 0.6em; margin-bottom: 0.5em; }
   .links-panel {
     flex-direction: column; /* Stack link columns (Google, Finance) */
     overflow-y: visible;
-    padding: var(--panel-padding);
-    gap: 1em;
+    padding: calc(var(--panel-padding) / 1.5); /* Reduced padding on mobile */
+    gap: 0.8em;
   }
-  .icon-name-list img { width: calc(var(--icon-size) * 0.85); height: calc(var(--icon-size) * 0.85); }
-  .icon-name-list span { font-size: 0.9em; }
-  .footer { padding: 0.5em 0 1em 0; }
+  .icon-name-list img { width: calc(var(--icon-size) * 0.8); height: calc(var(--icon-size) * 0.8); }
+  .icon-name-list span { font-size: 0.85em; }
+  .footer { padding: 1em 0; margin-top: 1em; }
 }
