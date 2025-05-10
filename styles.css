@@ -125,7 +125,7 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
   font-weight: 700;
   padding: 0.5em 1em;
   background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better contrast */
-  border-radius: var(--border-radius) var(--border-radius) 0 0; /* Round top corners if at bottom */
+  border-radius: var(--border-radius);
   text-align: center;
   margin-bottom: 1em; /* ADDED: Add some space from the absolute bottom */
   /* To hide it and just have the image clickable, set: display: none; */
