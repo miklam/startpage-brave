@@ -102,6 +102,6 @@ const financeLinks = [
 ---
 
 ## Credits
-- This project utilizes the Catppuccin Mocha color palette.
-- Font: Inter from Google Fonts.
-- Concept inspired by various startpage projects.
+- **Catppuccin Theme Palette:** Colors adapted from the [Catppuccin Mocha theme](https://github.com/catppuccin/catppuccin).
+- **Inter Font:** Served via [Google Fonts](https://fonts.google.com/specimen/Inter).
+- **Glassstaff** for the image: [Reddit profile](https://www.reddit.com/user/Cedriminator/)
