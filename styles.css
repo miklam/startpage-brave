@@ -1,6 +1,6 @@
 /* ==========================================================================
    styles.css for Brave Startpage
-   Catppuccin Mocha Theme | Two-Panel Layout with Image
+   Catppuccin Mocha Theme | Two-Panel Layout with Image & Footer
    Last updated: May 10, 2025
    ========================================================================== */
 
@@ -20,13 +20,13 @@
   --ctp-yellow: #f9e2af;
   --ctp-green: #a6e3a1;
   --ctp-teal: #94e2d5;
-  --ctp-sky: #89dceb;
+  --ctp-sky: #89dceb;     /* Used for focus on tab buttons */
   --ctp-sapphire: #74c7ec;
   --ctp-blue: #89b4fa;
   --ctp-lavender: #b4befe;
   --ctp-text: #cdd6f4;     /* Main text */
-  --ctp-subtext1: #bac2de;
-  --ctp-subtext0: #a6adc8;
+  --ctp-subtext1: #bac2de; /* Slightly dimmer text for links */
+  --ctp-subtext0: #a6adc8; /* Even dimmer text for footer link */
   --ctp-overlay2: #9399b2;
   --ctp-overlay1: #7f849c;
   --ctp-overlay0: #6c7086;
@@ -34,13 +34,13 @@
   --ctp-surface1: #45475a; /* Borders, hover states */
   --ctp-surface0: #313244; /* Subtle backgrounds, panel backgrounds */
   --ctp-base: #1e1e2e;     /* Main page background */
-  --ctp-mantle: #181825;
+  --ctp-mantle: #181825;   /* Main container background */
   --ctp-crust: #11111b;
 
   /* --- Core Variables --- */
   --bg: var(--ctp-base);
   --fg: var(--ctp-text);
-  --panel-bg: var(--ctp-surface0); /* Default panel background */
+  --panel-bg: var(--ctp-surface0);
   --panel-border: var(--ctp-surface1);
   --accent-color: var(--ctp-mauve);
   --hover-bg: var(--ctp-surface1);
@@ -51,7 +51,7 @@
 
   /* --- Sizing & Spacing --- */
   --border-radius: 0.5em;
-  --panel-padding: 2em; /* Default padding for panels */
+  --panel-padding: 2em;
   --link-padding: 0.75em;
   --icon-size: 28px;
 }
@@ -61,74 +61,117 @@
    ========================================================================== */
 * { margin: 0; padding: 0; border: 0; box-sizing: border-box; color: var(--fg); outline-style: none; text-decoration: none; -webkit-tap-highlight-color: transparent; -ms-overflow-style: none; scrollbar-width: none; }
 *::-webkit-scrollbar { display: none; }
-body { font-family: var(--font-body); font-weight: 400; background-color: var(--bg); color: var(--fg); line-height: 1.6; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 1em; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1em; /* Padding around the main container */
+}
 
 /* ==========================================================================
    Main Page Container & Panels
    ========================================================================== */
-.brave-page-container { display: flex; width: 100%; max-width: 1200px; min-height: 80vh; background-color: var(--ctp-mantle); border-radius: var(--border-radius); box-shadow: 0 10px 25px rgba(0,0,0,0.2); overflow: hidden; }
+
+.brave-page-container {
+  display: flex;
+  flex-direction: column; /* Stack content-panels-wrapper and footer vertically */
+  width: 100%;
+  max-width: 1200px;
+  min-height: 80vh; /* Ensure it has some height */
+  background-color: var(--ctp-mantle);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  /* overflow: hidden; /* Removed to let box-shadow be visible, panels will handle their own scroll */
+}
+
+/* Wrapper for the two main content panels (Foundry & Links) */
+.content-panels-wrapper {
+    display: flex; /* Arrange Foundry and Links panels side-by-side */
+    flex-grow: 1;  /* Allow this wrapper to take available vertical space */
+    width: 100%;
+    overflow: hidden; /* Handles overflow if panels are too wide (shouldn't happen with flex:1) */
+}
 
 .foundry-panel,
 .links-panel {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* For internal content stacking */
 }
 
 .foundry-panel {
-  flex: 1;
+  flex: 1; /* Takes up half the space of content-panels-wrapper */
   border-right: 1px solid var(--panel-border);
-  position: relative; 
-  padding: 0; 
-  background-image: url('assets/images/foundry-bg.jpg'); /* Ensure this path is correct */
-  background-size: cover; 
-  background-position: center; 
+  position: relative;
+  padding: 0; /* Image will fill this */
+  background-image: url('assets/images/foundry-bg.jpg'); /* UPDATE THIS PATH if needed */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
 .links-panel {
-  flex: 1;
-  display: flex;
-  gap: var(--panel-padding);
-  padding: var(--panel-padding); 
-  overflow-y: auto;
+  flex: 1; /* Takes up the other half of content-panels-wrapper */
+  display: flex; /* To arrange the two link columns */
+  gap: var(--panel-padding); /* Space between the two link columns */
+  padding: var(--panel-padding);
+  overflow-y: auto; /* Allow vertical scrolling if link lists are long */
 }
 
-.links-column { flex: 1; display: flex; flex-direction: column; gap: 0.5em; }
-.panel-subtitle { font-family: var(--font-header); font-size: 1.1em; font-weight: 700; color: var(--ctp-subtext1); margin-bottom: 1em; text-align: center; border-bottom: 1px solid var(--panel-border); padding-bottom: 0.5em; }
+.links-column {
+  flex: 1; /* Each column takes half of the links-panel space */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /* Space between items in a column */
+}
+
+.panel-subtitle { /* Optional subtitles if you add them in HTML */
+  font-family: var(--font-header);
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--ctp-subtext1);
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 0.5em;
+}
 
 /* ==========================================================================
    Foundry VTT Image Link
    ========================================================================== */
 .foundry-image-link {
-  display: flex; 
-  justify-content: center; /* Horizontal centering */
-  align-items: flex-end;   /* MODIFIED: Align text to the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;   /* Align text to the bottom */
   width: 100%;
   height: 100%;
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   text-decoration: none;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
-
 .foundry-image-link:hover,
 .foundry-image-link:focus {
-  background-color: rgba(0, 0, 0, 0.2); 
-  outline: none;
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay on hover/focus */
+  /* outline: none; /* Covered by global focus style if using box-shadow */
 }
-
 .foundry-link-text {
-  color: var(--ctp-text); 
+  color: var(--ctp-text);
   font-family: var(--font-header);
-  font-size: 2em; 
+  font-size: 2em;
   font-weight: 700;
   padding: 0.5em 1em;
-  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better contrast */
-  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
   text-align: center;
-  margin-bottom: 1em; /* ADDED: Add some space from the absolute bottom */
-  /* To hide it and just have the image clickable, set: display: none; */
+  margin-bottom: 1em; /* Space from the absolute bottom */
 }
 
 /* ==========================================================================
@@ -137,73 +180,73 @@ body { font-family: var(--font-body); font-weight: 400; background-color: var(--
 .icon-name-list { list-style: none; padding: 0; margin: 0; }
 .icon-name-list li { margin-bottom: 0.5em; }
 .icon-name-list a { display: flex; align-items: center; padding: var(--link-padding); border-radius: var(--border-radius); transition: background-color 0.2s ease, color 0.2s ease; color: var(--ctp-subtext1); }
-.icon-name-list a:hover, .icon-name-list a:focus { background-color: var(--hover-bg); color: var(--ctp-text); outline: none; }
+.icon-name-list a:hover, .icon-name-list a:focus { background-color: var(--hover-bg); color: var(--ctp-text); /* outline: none; */ }
 .icon-name-list img { width: var(--icon-size); height: var(--icon-size); margin-right: 0.8em; }
 .icon-name-list span { font-size: 1em; font-weight: 400; }
 
 /* ==========================================================================
    Footer
    ========================================================================== */
-
 .footer {
-  width: 100%; /* Take full width to allow text-align to center content */
-  padding: 1em 0; /* Add some padding above and below */
-  text-align: center; /* Center the link text */
-  margin-top: auto; /* Helps push footer down if content is short, works with body flex */
-  position: relative; /* Keep it in normal flow, not fixed */
+  width: 100%;
+  padding: 1em 0;
+  text-align: center;
+  margin-top: auto; /* Pushes footer to bottom of .brave-page-container */
+  border-top: 1px solid var(--panel-border);
+  background-color: var(--ctp-mantle); /* Match container background */
 }
-
-.footer a {
-  color: var(--ctp-subtext0); /* Use a subtle color from your theme */
-  font-size: 0.9em;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer a:hover,
-.footer a:focus {
-  color: var(--accent-color); /* Use your main accent color on hover/focus */
-  text-decoration: underline; /* Optional: add underline on hover */
-  outline: none; /* Remove default focus outline if using text-decoration or color change for focus */
-}
-
+.footer a { color: var(--ctp-subtext0); font-size: 0.9em; text-decoration: none; transition: color 0.2s ease; }
+.footer a:hover, .footer a:focus { color: var(--accent-color); text-decoration: underline; /* outline: none; */ }
 
 /* ==========================================================================
-   Responsive Adjustments (Example for smaller screens)
+   Accessibility Focus Styles (Using box-shadow for rounded corners)
    ========================================================================== */
+a:focus,
+button:focus { /* General focus for links and any buttons */
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+/* Specific focus for Foundry link if needed, or rely on general 'a:focus' */
+.foundry-image-link:focus {
+  /* Already has a hover background, box-shadow might be too much on image */
+  /* If you want a distinct focus on the image link itself: */
+  /* box-shadow: 0 0 0 3px var(--ctp-sky) inset; */ /* Example: inset shadow */
+}
+.icon-name-list a:focus {
+    box-shadow: 0 0 0 2px var(--ctp-sky); /* Different color for list item focus */
+}
 
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
 @media (max-width: 768px) {
+  body {
+    align-items: flex-start; /* Allow content to start from top on mobile */
+    padding: 0.5em;
+  }
   .brave-page-container {
     flex-direction: column;
     min-height: auto;
     height: auto;
-    margin: 1em;
+    margin: 0; /* Take full width of padded body */
+    width: 100%;
   }
-
+  .content-panels-wrapper {
+      flex-direction: column; /* Stack Foundry and Links panels */
+  }
   .foundry-panel {
     border-right: none;
     border-bottom: 1px solid var(--panel-border);
-    min-height: 250px;
+    min-height: 250px; /* Or adjust based on image aspect ratio */
   }
-  .foundry-link-text {
-    font-size: 1.5em;
-    padding: 0.4em 0.8em;
-    margin-bottom: 0.5em;
-  }
+  .foundry-link-text { font-size: 1.5em; padding: 0.4em 0.8em; margin-bottom: 0.5em; }
   .links-panel {
-    flex-direction: column;
+    flex-direction: column; /* Stack link columns (Google, Finance) */
     overflow-y: visible;
     padding: var(--panel-padding);
+    gap: 1em;
   }
-  .icon-name-list img {
-    width: calc(var(--icon-size) * 0.85);
-    height: calc(var(--icon-size) * 0.85);
-  }
-  .icon-name-list span {
-    font-size: 0.9em;
-  }
-
-  .footer {
-    padding: 0.5em 0 1em 0; /* Adjust mobile footer padding */
-  }
+  .icon-name-list img { width: calc(var(--icon-size) * 0.85); height: calc(var(--icon-size) * 0.85); }
+  .icon-name-list span { font-size: 0.9em; }
+  .footer { padding: 0.5em 0 1em 0; }
 }
