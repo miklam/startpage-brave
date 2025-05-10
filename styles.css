@@ -169,7 +169,7 @@ body {
   font-weight: 700;
   padding: 0.5em 1em;
   background-color: rgba(0, 0, 0, 0.6);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: var(--border-radius);
   text-align: center;
   margin-bottom: 1em; /* Space from the absolute bottom */
 }
