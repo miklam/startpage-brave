@@ -1,6 +1,6 @@
 # Brave Startpage - Focused Launcher
 
-![Brave Startpage Screenshot](assets/images/brave-homepage-screenshot.png)
+![Brave Startpage Screenshot](assets/images/brave-startpage-screenshot.png)
 A minimal, two-panel startpage designed for quick access to Foundry VTT and frequently used Google services & finance links. Built with HTML, CSS, and vanilla JavaScript, featuring a Catppuccin Mocha theme.
 
 ## Features
