@@ -5,18 +5,18 @@ A minimal, two-panel startpage designed for quick access to Foundry VTT and freq
 
 ## Features
 
-* **Two-Panel Layout:**
-    * **Left Panel:** Large, clickable image linking directly to Foundry VTT.
-    * **Right Panel:** Two columns displaying links with icons and names for:
-        * Google Services
-        * Personal Finance links
-* **Theme:** Styled with the **Catppuccin Mocha** color palette.
-* **Icons:** Links are displayed with associated icons for quick recognition.
-* **Responsive:** Adapts to smaller screen sizes by stacking panels.
-* **Configurable:** Links and icon paths are managed through `config.js`.
+- **Two-Panel Layout:**
+   - **Left Panel:** Large, clickable image linking directly to Foundry VTT.
+   - **Right Panel:** Two columns displaying links with icons and names for:
+      - Google Services
+      - Personal Finance links
+- **Theme:** Styled with the **Catppuccin Mocha** color palette.
+- **Icons:** Links are displayed with associated icons for quick recognition.
+- **Responsive:** Adapts to smaller screen sizes by stacking panels.
+- **Configurable:** Links and icon paths are managed through `config.js`.
+
 
 ## Configuration
-
 All customization for the links is done in the **`config.js`** file.
 
 ### 1. Foundry VTT Link
@@ -30,15 +30,14 @@ const foundryVTT_url = "YOUR_FOUNDRY_VTT_URL_HERE";
 ### 2. Adding/Modifying Links in the Right Panel
 The right panel contains two lists: "Google Services" and "Finance Links". These are populated from the googleServices and financeLinks arrays in config.js respectively.
 
-To add or modify a link:
-
-  1. Prepare your Icon:
-     - Find or create an icon (preferably SVG, but PNG/JPG will work) for your link.
-     - Place the icon file in a suitable folder, for example, assets/icons/google/ for Google services or assets/icons/custom/ for other links.
-  2. Edit config.js:
-     - Open the config.js file.
-     - Locate the array you want to modify (googleServices or financeLinks).
-     - Each link in the array is an object with three properties: name, url, and icon.
+**To add or modify a link:**
+   **1. Prepare your Icon:**     
+      - Find or create an icon (preferably SVG, but PNG/JPG will work) for your link.
+      - Place the icon file in a suitable folder, for example, assets/icons/google/ for Google services or assets/icons/custom/ for other links.
+   **2. Edit config.js:**
+      - Open the config.js file.
+      - Locate the array you want to modify (googleServices or financeLinks).
+      - Each link in the array is an object with three properties: name, url, and icon.
 
 ```javascript
 // Example structure for an item in googleServices or financeLinks:
@@ -49,11 +48,12 @@ To add or modify a link:
 }
 ```
 
-  - To add a new link: Add a new object with these three properties to the desired array. Make sure to add a comma , after the preceding object if it's not the last one.
-  - To modify an existing link: Change the name, url, or icon path for the existing object.
-  - To remove a link: Delete the entire object for that link from the array.
+   - **To add a new link:** Add a new object with these three properties to the desired array. Make sure to add a comma , after the preceding object if it's not the last one.
+   - **To modify an existing link:** Change the name, url, or icon path for the existing object.
+   - **To remove a link:** Delete the entire object for that link from the array.
 
 **Example: Adding a new Google Service link:**
+
 ```javascript
 // config.js
 
@@ -96,30 +96,10 @@ const financeLinks = [
 ];
 ```
 
-  ### 3. Save config.js.
-  ### 4. Refresh your index.html in the browser to see the changes.
+### 3. Save config.js.
+### 4. Refresh your index.html in the browser to see the changes.
 
-## File Structure (Relevant for Icons)
-startpage-brave/
-├── assets/
-│   ├── icons/
-│   │   ├── google/
-│   │   │   ├── calendar.svg
-│   │   │   └── drive.svg
-│   │   │   └── (etc.)
-│   │   ├── finance/
-│   │   │   ├── gsheet.svg
-│   │   │   └── (etc.)
-│   │   └── (other custom icon folders or files)
-│   └── images/
-│       └── foundry-bg.jpg  (Example for the left panel background)
-├── config.js               (Edit this for links)
-├── index.html
-├── main.js
-├── styles.css
-└── README.md
-
-Ensure your icon paths in config.js correctly point to the location of your icon files within the assets folder.
+---
 
 ## Credits
 - This project utilizes the Catppuccin Mocha color palette.
