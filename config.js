@@ -14,27 +14,32 @@ const googleServices = [
     {
         name: "Google Calendar",
         url: "https://calendar.google.com/",
-        icon: "assets/icons/google/calendar.svg" // Placeholder - update with your actual icon path
+        icon: "assets/icons/google/calendar.svg"
     },
     {
         name: "Google Drive",
         url: "https://drive.google.com/",
-        icon: "assets/icons/google/drive.svg"     // Placeholder
+        icon: "assets/icons/google/drive.svg"
     },
     {
         name: "Google Keep",
         url: "https://keep.google.com/",
-        icon: "assets/icons/google/keep.svg"      // Placeholder
+        icon: "assets/icons/google/keep.svg"
     },
     {
         name: "Google Maps",
-        url: "https://www.google.com/maps/", // As you provided
-        icon: "assets/icons/google/maps.svg"        // Placeholder
+        url: "https://www.google.com/maps/",
+        icon: "assets/icons/google/maps.svg"
     },
     {
         name: "Google Photos",
-        url: "https://photos.google.com/", // As you provided
-        icon: "assets/icons/google/photos.svg"      // Placeholder
+        url: "https://photos.google.com/",
+        icon: "assets/icons/google/photos.svg"
+    },
+    {
+        name: "Gemini",
+        url: "https://gemini.google.com/app",
+        icon: "assets/icons/google/diamond.svg"
     }
 ];
 
