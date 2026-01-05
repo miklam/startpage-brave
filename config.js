@@ -47,14 +47,14 @@ const googleServices = [
 // Similar structure: name, url, and icon path
 const financeLinks = [
     {
-        name: "Budget Spreadsheet", // More descriptive name
-        url: "https://docs.google.com/spreadsheets/d/1ysoJcr2J0Tx0bMlGVVw5fr_dCdHJiI5YBNpFZSsGIc8/edit?resourcekey=&gid=586151987#gid=586151987",
-        icon: "assets/icons/google/finances.svg"   // Placeholder (e.g., a generic sheet icon)
+        name: "Budget Spreadsheet",
+        url: "https://docs.google.com/spreadsheets/d/1vehHqsjwUVU4hACdnmTTLw4_zpo3SRhUf_yaraBA_jY/edit?gid=559709657#gid=559709657",
+        icon: "assets/icons/google/finances.svg"
     },
     {
-        name: "Budget Input Form", // More descriptive name
-        url: "https://docs.google.com/forms/d/e/1FAIpQLSeZRyKUPArE-ne0QiA1dW7fwAjWtFMUxuVik2ZOPhTefWZpTg/viewform",
-        icon: "assets/icons/google/wallet.svg"    // Placeholder (e.g., a generic form icon)
+        name: "Budget Input Form",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSdcb5mxe0PZlEDBBHauqvfG2J-p8V_-zrJu22F-nZDVD480bA/viewform?usp=header",
+        icon: "assets/icons/google/wallet.svg"
     }
 ];
 
