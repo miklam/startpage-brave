@@ -48,7 +48,7 @@ const googleServices = [
 const financeLinks = [
     {
         name: "Budget Spreadsheet",
-        url: "https://docs.google.com/spreadsheets/d/1vehHqsjwUVU4hACdnmTTLw4_zpo3SRhUf_yaraBA_jY/edit?gid=559709657#gid=559709657",
+        url: "https://docs.google.com/spreadsheets/d/1vehHqsjwUVU4hACdnmTTLw4_zpo3SRhUf_yaraBA_jY/edit?usp=sharing",
         icon: "assets/icons/google/finances.svg"
     },
     {
