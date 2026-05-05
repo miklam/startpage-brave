@@ -3,7 +3,7 @@
 // ==========================================================================
 
 // --- Foundry VTT Link ---
-const foundryVTT_url = "http://83.251.196.186:30000/game";
+const foundryVTT_url = "http://92.33.211.126:30000/join";
 
 // --- Google Services ---
 // For each service, provide:
